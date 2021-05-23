@@ -15,8 +15,7 @@ class PagineGetController extends Controller
         // $this->middleware("auth", ['except' => [ 'riferimenti', 'allBlog']]);
     }
 
-    public function index(){
-         
+    public function index(){  
         return view("VistePagineGetController.indexApp")->with();
     }
 
@@ -24,35 +23,21 @@ class PagineGetController extends Controller
 
 
     public function mostraPostIdFiltrato($id) {
-       
-
         $recordUtenteLoggato = Auth::user()->id;
-
         $recordsPostFiltratiPerID = DB::select("select * from posts where user_id = $recordUtenteLoggato AND posts.id = $id");
-
-        // $recordFiltrato
-
-
-
         return view("VistePagineGetController.viewGeControllertAggiornaEliminaPostUtenteLoggato")->with("recordsFiltrati", $recordsPostFiltratiPerID);
     }
 
 
     public function show() {
 
-
         $tabella = new Posts();
-
         $record = $tabella::all();
-
 
         $RecordInneroJoinOrdinato = DB::select("select u.name, p.titolo, p.body, p.id,  p.created_at, p.cover_image 
                                                 from users u, posts p 
                                                 where u.id = p.user_id 
                                                 order by created_at  desc ");
-
-
-        // rivedi qui se stampare il nome utente o no ....
 
         return view("VistePagineGetController.showBlog")->with("recordsPassatiAllaView", $RecordInneroJoinOrdinato);
     }
