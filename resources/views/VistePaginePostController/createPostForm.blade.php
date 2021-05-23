@@ -2,37 +2,9 @@
 
 @section('contenuti')
 
-
-{{-- 
-
-    in questo esempio di progetto i forms d'inserimento sono
-    due ma poterbbero benissimo essere messi in un component
-    sono lasciati cosi' per mostrare le differenze con un codice
-    poco ottimizzato ....
-
-
-    quando di utilizza una form con una configurazione come la
-    seguente c'e la necessita' di creare la il link nella cartella
-    degli assets del progetto alla cartella storage, questo viene fatto
-    per motivi di sicurezza, dato che essa non e' direttamente accessibile
-    nevigando tramite le routes dell'applicazione, per creala si utilizza
-    il comando:
-    
-    $php artisan storage:link
-    
-    se il symlink non e' accessibile de esplora risorse eliminare il collegamento
-    e ricrearlo col precedente comando
-
---}}
-
-
 <h1>
    {{ $vettorePerLaView["titolo"] }}
 </h1>
-
-{{-- <p>
-    {{ $vettorePerLaView["sottoTitolo"] }}
-</p> --}}
 
 <div class="container">
 
