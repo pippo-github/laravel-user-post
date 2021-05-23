@@ -45,11 +45,12 @@ When an Author is removed, all the books connected to him are also removed in ca
 
 
 *What you need to create to make the application work:*
+<br><br>
+Create a db called: "**project_post_user_final_version**"<br>
+create two tables and populate: "**users**" and "**posts**"<br>
+You can use the db dump file: "**DB-posts-utente.sql**" <br>
 
-Create a db called: "project_post_user_final_version"
-create two tables and populate: "users" and "posts"
-You can use the db dump file: "DB-posts-utente.sql" 
-
+<br><br>
 
 **Commands that could be used to run the application:**
 
@@ -183,11 +184,11 @@ Quando un Autore viene rimosso, in cascata grazie ai constraint vengono rimossi 
 
 *Cosa occorre craeare per far funzionare l'applicazione:*
 
-```
-Creare un db chiamato: "progetto_post_utente_versione_finale "
-creare due tabelle e popolare: "users" e "posts"
-***Puoi usare il dump file del db: "DB-posts-utente.sql"***
-```
+<br><br>
+Creare un db chiamato: "**progetto_post_utente_versione_finale**" <br>
+creare due tabelle e popolare: "**users**" e "**posts**" <br>
+Puoi usare il dump file del db: "***DB-posts-utente.sql***"<br>
+<br>
 **Comandi che poterbbero servire per eseguire l'applicazione:**
 
 ***Laravel dependencies:***
