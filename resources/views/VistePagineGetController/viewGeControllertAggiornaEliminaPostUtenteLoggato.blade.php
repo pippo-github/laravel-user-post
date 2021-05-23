@@ -35,17 +35,6 @@
 
             </div>
 
-
-            {{-- 
-                se l'action non viene impostata correttamente il framework redirigge sul una prima route di get parametrizzata in modo simile
-                oppure viene mostrato il messaggio che la route suppota solo il metodo GET o HEAD, ma scrivendo correttamente il 
-                
-                controller@actionFunction
-                
-                Tutto funziona correttamente interpretando in maniera adeguata il metodo PUT spoofed
-            --}}
-
-
         <div class="d-flex mt-2">
                     {{Form::open( ["action" => ["App\Http\Controllers\PostsController@update", $record->id ], "method" => "post", "class" => "form-group mr-2 "]) }}
 
@@ -60,8 +49,7 @@
                     {{Form::submit("delete post" , ["class" => "btn btn-danger"])}}
                     
                     {{Form::close()}}
-
-                </div>
+        </div>
 
 
 
