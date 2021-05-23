@@ -57,16 +57,6 @@ class PostsController extends Controller
     {
         //
 
-        // questa funzione non dovrebbe inserire i valori nel db
-        // lo faccio ugualmente per esercizio e riempire questa
-        // action@function associata alla route predefinita
-
-        // la giusta route per l'inserimento dei dati nel db
-        // e' store($id), la quale puo' effettuare i controlli
-        // validate su l'oggetto $request ed inserire il post
-        // in base all'id utente
-
-
         $this->validate($request,[
 
             "titolo" => "required",
@@ -85,14 +75,8 @@ class PostsController extends Controller
             echo "file name selected: $nomeFileWithExt <br /> ";
             $ext            = pathinfo($nomeFileWithExt, PATHINFO_EXTENSION); // To get extension
             $nameWoutExt    = pathinfo($nomeFileWithExt, PATHINFO_FILENAME); // name file without extensione 
-
-            // echo "file name selected, senza estensione: $nameWoutExt <br /> file name selected, estensione: $ext ";
                         
             $fileNameDaSavlare = $nameWoutExt.time().'.'.$ext;
-
-            echo "file da salvare nel db: $fileNameDaSavlare <br />";
-
-            // dd("dd abilita debug per le echo, altrimenti non funzionano");
 
             $path = $request->file("cover_image")->storeAs("public/cover_images", $fileNameDaSavlare);
         }
@@ -151,24 +135,6 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // la validate non premette l'avanzamento nell'applicazione
-        // se i dati non sono rispettati, in piu' valorizza $errors->all()
-        // inoltre fa tornare l'utenle in maniera trasparente dove l'errore
-        // si e' verificato in maniera tale da correggerlo
-
-        // inerente alla validazione della "cover_imag", specifico che:
-        // deve essere un file di tipo immagine: jpg, bnp, jpeg ecc
-        // puo' essere nullo
-        // deve avere dimensione massima 2MB
-
-        // $this->validate($request,[
-
-        //     "titolo" => "required",
-        //     "body" => "required",
-        //     "cover_image" => "image|nullable|max:1999",
-
-        // ]);
-
         $tabella = new Posts();
         $recordDelPost = $tabella::find($id);
 
@@ -186,13 +152,8 @@ class PostsController extends Controller
     {
         //
 
-        echo "id to delete recivied: $id <br /><br />";
-
         $tabella = Posts::find($id);
         $tabella->delete();
-
-        // si puo' anche utilizzare la sintassi piu' breve:
-        // Posts::destroy($id);
 
         return redirect("/dashboard")->with("successo", "post eliminato correttamente");
     }
@@ -215,8 +176,7 @@ class PostsController extends Controller
         if($request->hasFile("cover_image")){
 
 
-            /* 
-            
+            /*             
             per poter utilizzare la funzione di helper asset
             si deve prima creare il link simbolico col comando
 
@@ -224,8 +184,7 @@ class PostsController extends Controller
 
             dopo si puo' utilizzare una sintassi del genere:
 
-            <img src="{{ asset('storage/'.$cv->photo) }}" alt="...">
-            
+            <img src="{{ asset('storage/'.$cv->photo) }}" alt="...">            
             */
 
 
@@ -236,14 +195,8 @@ class PostsController extends Controller
             $nameWoutExt    = pathinfo($nomeFileWithExt, PATHINFO_FILENAME); // name file without extensione 
 
             echo "file name selected, senza estensione: $nameWoutExt <br /> file name selected, estensione: $ext ";
-            
-            // dd("file debug, file name selected, senza estensione: $nameWoutExt <br /> file name selected, estensione: $ext ");
-            
+                        
             $fileNameDaSavlare = $nameWoutExt.time().'.'.$ext;
-
-            echo "file da salvare nel db: $fileNameDaSavlare <br />";
-
-            // dd("dd, abilita debug per le echo, altrimenti non funzionano");
 
             $path = $request->file("cover_image")->storeAs("public/cover_images", $fileNameDaSavlare);
         }
@@ -252,18 +205,6 @@ class PostsController extends Controller
 
             $fileNameDaSavlare = "noImage.jpg";
         }
-
-
-
-
-        // quando il debug con dd e' abilitato
-        // non interagisce con funzioni come View e tutto
-        // quello che ruota col db, quindi disabilitarlo
-        // al momento del salvataggio, atrimenti i valori
-        // nel db non verranno memorizzati !!!
-        
-        // un opzione e' posizionare alla fine della funzione
-        // prima o dopo la return !!!
         
         $titolo = $request->input("titolo");
         $body = $request->input("body");
