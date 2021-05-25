@@ -115,7 +115,7 @@ The following images represent the main parts of the application
 
 *All blogs page*
 
-![allBlogs](screenShot\allBlogPage.png)
+![allBlogs](screenShot/allBlogPage.png)
 
 *Delete update user post*
 
